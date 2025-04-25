@@ -7,7 +7,7 @@ kind: Deployment
 ### Deployment Metadata
 ###
 metadata:
-  name: dvwa-web
+  name: dvwa-web-group16
 
 
 ###
@@ -38,4 +38,4 @@ spec:
             - containerPort: 80
           env:
             - name: DB_SERVER
-              value: dvwa-mysql-service
+              value: dvwa-mysql-service-group16

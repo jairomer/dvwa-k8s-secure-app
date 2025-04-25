@@ -7,7 +7,7 @@ kind: Deployment
 ### Deployment Metadata
 ###
 metadata:
-  name: dvwa-mysql
+  name: dvwa-mysql-group16
 
 
 ###
