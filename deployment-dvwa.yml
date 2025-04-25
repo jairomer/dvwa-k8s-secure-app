@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+
+###
+### Deployment Metadata
+###
+metadata:
+  name: dvwa-web
+
+
+###
+### Specs
+###
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: dvwa-web
+      tier: frontend
+
+  template:
+
+    # Template Metadata to be used by service for discovery
+    metadata:
+      labels:
+        app: dvwa-web
+        tier: frontend
+
+    # Container/Volume definition
+    spec:
+      containers:
+        - name: dvwa
+          image: ghcr.io/digininja/dvwa:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_SERVER
+              value: dvwa-mysql-service
