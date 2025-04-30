@@ -8,7 +8,7 @@ kind: Deployment
 ###
 metadata:
   name: dvwa-mysql-group16
-  namespace: ns-dvwa-group16
+  namespace: dvwa-mysql-group16
 
 ###
 ### Specs

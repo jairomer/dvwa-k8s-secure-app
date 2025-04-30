@@ -2,4 +2,4 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: dvwa-web-sa 
-  namespace: ns-dvwa-group16 
+  namespace: dvwa-web-group16 

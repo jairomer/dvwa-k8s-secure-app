@@ -2,4 +2,4 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: dvwa-db-sa 
-  namespace: ns-dvwa-group16 
+  namespace: dvwa-mysql-group16 

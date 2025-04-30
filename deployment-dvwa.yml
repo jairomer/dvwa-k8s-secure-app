@@ -8,7 +8,7 @@ kind: Deployment
 ###
 metadata:
   name: dvwa-web-group16
-  namespace: ns-dvwa-group16
+  namespace: dvwa-web-group16
 
 
 ###
@@ -35,9 +35,37 @@ spec:
       serviceAccount: dvwa-web-sa
       containers:
         - name: dvwa
-          image: ghcr.io/digininja/dvwa:latest
+          #image: ghcr.io/digininja/dvwa:latest
+          image: docker.io/library/mygroup16dvwa:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           env:
             - name: DB_SERVER
-              value: dvwa-mysql-service-group16
+              value: dvwa-mysql-service-group16.dvwa-mysql-group16
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - CAP_NET_RAW
+            runAsUser: 33
+            runAsGroup: 33
+          volumeMounts:
+            - name: run-dir
+              mountPath: /var/run/apache2
+            - name: log-dir
+              mountPath: /var/log/apache2
+            - name: tmp-dir
+              mountPath: /tmp
+      volumes:
+        - name: run-dir
+          emptyDir: {}
+        - name: log-dir
+          emptyDir: {}
+        - name: tmp-dir
+          emptyDir: {}
+

@@ -4,11 +4,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: rolebinding-mysql
-  namespace: ns-dvwa-group16
+  namespace: dvwa-mysql-group16
 subjects:
 - kind: ServiceAccount
   name: dvwa-db-sa
-  namespace: ns-dvwa-group16
+  namespace: dvwa-mysql-group16
 roleRef:
   kind: Role 
   name: role-mysql
