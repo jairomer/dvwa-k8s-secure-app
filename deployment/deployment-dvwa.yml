@@ -36,8 +36,8 @@ spec:
       containers:
         - name: dvwa
           #image: ghcr.io/digininja/dvwa:latest
-          image: docker.io/library/mygroup16dvwa:latest
-          imagePullPolicy: IfNotPresent
+          image: mygroup16dvwa:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
           env:
@@ -50,8 +50,6 @@ spec:
             capabilities:
               drop:
                 - ALL
-              add:
-                - CAP_NET_RAW
             runAsUser: 33
             runAsGroup: 33
           volumeMounts:
@@ -61,11 +59,15 @@ spec:
               mountPath: /var/log/apache2
             - name: tmp-dir
               mountPath: /tmp
+            - name: uploads-dir
+              mountPath: /var/www/html/hackable/uploads/
       volumes:
         - name: run-dir
           emptyDir: {}
         - name: log-dir
           emptyDir: {}
         - name: tmp-dir
+          emptyDir: {}
+        - name: uploads-dir
           emptyDir: {}
 
