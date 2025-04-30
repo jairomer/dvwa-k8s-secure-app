@@ -8,7 +8,7 @@ kind: Deployment
 ###
 metadata:
   name: dvwa-mysql-group16
-
+  namespace: ns-dvwa-group16
 
 ###
 ### Specs
@@ -31,6 +31,7 @@ spec:
 
     # Container/Volume definition
     spec:
+      serviceAccount: dvwa-db-sa
       containers:
         - name: mysql
           image: docker.io/library/mariadb:10

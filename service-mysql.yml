@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dvwa-mysql-service-group16
+  namespace: ns-dvwa-group16
 spec:
   selector:
     app: dvwa-mysql

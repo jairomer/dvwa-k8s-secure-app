@@ -8,6 +8,7 @@ kind: Deployment
 ###
 metadata:
   name: dvwa-web-group16
+  namespace: ns-dvwa-group16
 
 
 ###
@@ -31,6 +32,7 @@ spec:
 
     # Container/Volume definition
     spec:
+      serviceAccount: dvwa-web-sa
       containers:
         - name: dvwa
           image: ghcr.io/digininja/dvwa:latest
